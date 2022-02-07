@@ -1,7 +1,8 @@
 package com.germanbarrera.controlClientes.controller;
 
 import com.germanbarrera.controlClientes.entity.Person;
-import com.germanbarrera.controlClientes.service.PersonService;
+//import com.germanbarrera.controlClientes.service.PersonService;
+import com.germanbarrera.controlClientes.service.PersonServiceImpl.MultipleInterfacePersonServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,11 @@ import java.util.List;
 @Slf4j
 public class PersonController {
 
+//    @Autowired
+//    private PersonService personService;
+
     @Autowired
-    private PersonService personService;
+    private MultipleInterfacePersonServiceImpl personService;
 
     @GetMapping("/menu")
     public String showMenu(){
@@ -44,7 +48,7 @@ public class PersonController {
 
     //when we hit the /add in a @PostMapping we save the object and redirect to the list.
     @PostMapping(value = "/add")
-    public String savePerson(@ModelAttribute Person person,
+    public String save(@ModelAttribute Person person,
                              RedirectAttributes redirectAttrs) {
         log.info("ADDING A NEW CLIENT");
         personService.save(person);
