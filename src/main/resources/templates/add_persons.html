@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ferreteria Cepillo</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<form  class="form-signin" th:object="${person}" th:action="@{/person/add}" method="post">
+
+    <h1 align="center" >Add Person data</h1>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input th:field="*{name}" id="name" placeholder="Name" type="text"
+               class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="surname">Surname</label>
+        <input th:field="*{surname}" id="surname" placeholder="Surname" type="text"
+               class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input th:field="*{email}" id="email" placeholder="E-mail" type="text"
+               class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input th:field="*{phone}" id="phone" placeholder=" Phone " type="text"
+               class="form-control">
+    </div>
+
+
+
+    <button class="btn btn-success" type="submit">Save Person</button>
+    &nbsp;<a class="btn btn-warning" th:href="@{/person/show_list}">See Them All</a>
+
+    <p>Please select an option</p>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ferreteria Cepillo</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #3e3e3e;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<div class="col-12">
+    <h2 align="center">Editing a Client </h2>
+    <form th:object="${person}" th:action="@{/person/edit/} + ${person_id}" method="post">
+        <input type="hidden" th:field="*{person_id}">
+
+        <div class="form-group">
+            <label for="name">Client's name</label>
+            <input autocomplete="off" autofocus th:field="*{name}" id="name"
+                   placeholder="Name" type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Client's Surname</label>
+            <input autocomplete="off" autofocus th:field="*{surname}" id="surname"
+                   placeholder="Surname" type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('surname')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{surname}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Client's E-mail</label>
+            <input autocomplete="off" autofocus th:field="*{email}" id="email"
+                   placeholder="E-mail" type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{email}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Client's Phone</label>
+            <input autocomplete="off" th:field="*{phone}" id="phone" placeholder="phone"
+                   type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('phone')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{phone}"></div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Save</button>
+        &nbsp;<a class="btn btn-warning" th:href="@{/person/show_list}">See Them All</a>
+    </form>
+</div>
+</main>
+</body>
+</html>
