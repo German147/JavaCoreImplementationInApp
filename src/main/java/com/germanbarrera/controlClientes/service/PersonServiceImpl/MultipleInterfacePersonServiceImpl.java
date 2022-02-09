@@ -1,7 +1,8 @@
 package com.germanbarrera.controlClientes.service.PersonServiceImpl;
 
 import com.germanbarrera.controlClientes.entity.Person;
-import com.germanbarrera.controlClientes.exceptions.ClienteNotFoundExceptions;
+import com.germanbarrera.controlClientes.exceptions.ClientNotFoundExceptions;
+import com.germanbarrera.controlClientes.exceptions.IdNotFoundException;
 import com.germanbarrera.controlClientes.repository.PersonRepository;
 import com.germanbarrera.controlClientes.service.GettersMethodsPersonService;
 import com.germanbarrera.controlClientes.service.MultiplePostInheritranceInterface;
@@ -25,7 +26,7 @@ public class MultipleInterfacePersonServiceImpl implements MultiplePostInheritra
         Optional<Person> op = personRepository.findById(person_id);
 
         if (!op.isPresent()) {
-            throw new Exception("ID NO ENCONTRADO" + person_id);
+            throw new IdNotFoundException("ID NO ENCONTRADO" + person_id);
         }
         personRepository.deleteById(person_id);
 
@@ -60,7 +61,7 @@ public class MultipleInterfacePersonServiceImpl implements MultiplePostInheritra
                 person1 = personRepository.save(person);
             }
         } else {
-            throw new ClienteNotFoundExceptions("The Id number " + person_id + " does not exist");
+            throw new ClientNotFoundExceptions("The Id number " + person_id + " does not exist");
         }
 
         return person1;

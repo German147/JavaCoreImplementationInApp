@@ -25,3 +25,14 @@ There are mainly three reasons why to use interface:
 it is known as MULTIPLE INHERITANCE.
 ###I have created an example of these case of study using the Interface PersonService in the service package in this app
 
+### Abstract and final
+
+In java, you will never see a class or method declared with both final and abstract keywords. For classes, final is used 
+to prevent inheritance whereas abstract classes depends upon their child classes for complete implementation. In cases 
+of methods, final is used to prevent overriding whereas abstract methods needs to be overridden in sub-classes.
+
+From https://www.geeksforgeeks.org/abstract-keyword-in-java/
+
+### Polymorphism shown through Method Overloading and Method Overriding
+
+https://www.geeksforgeeks.org/overloading-in-java/?ref=gcse

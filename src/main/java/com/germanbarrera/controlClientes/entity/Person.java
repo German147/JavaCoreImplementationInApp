@@ -1,15 +1,13 @@
 package com.germanbarrera.controlClientes.entity;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "persona")
-public class Person {
+public class Person extends People {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +17,9 @@ public class Person {
     private String surname;
     private String email;
     private String phone;
+
+
+
+
+
 }
