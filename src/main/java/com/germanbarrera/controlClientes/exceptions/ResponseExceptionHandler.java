@@ -1,5 +1,7 @@
 package com.germanbarrera.controlClientes.exceptions;
 //Here we build an exception Controller
+//Using exceptions a Class Level, we are making a code more clear without
+// so many try catch block everywhere.
 
 import com.germanbarrera.controlClientes.response.ExceptionResponse;
 import org.springframework.http.HttpHeaders;
@@ -18,13 +20,19 @@ import java.time.LocalDateTime;
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponse> dealWithAllExcepciones(ClienteNotFoundExceptions ex, WebRequest
+    public final ResponseEntity<ExceptionResponse> dealWithAllExcepciones(ClientNotFoundExceptions ex, WebRequest
             request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<ExceptionResponse>(er, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    @ExceptionHandler(ClienteNotFoundExceptions.class)
-    public final ResponseEntity<ExceptionResponse> dealingEntityException(ClienteNotFoundExceptions ex, WebRequest
+    @ExceptionHandler(ClientNotFoundExceptions.class)
+    public final ResponseEntity<ExceptionResponse> dealingEntityException(ClientNotFoundExceptions ex, WebRequest
+            request) {
+        ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<ExceptionResponse>(er, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(IdNotFoundException.class)
+    public final ResponseEntity<ExceptionResponse> dealingEntityException(IdNotFoundException ex, WebRequest
             request) {
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<ExceptionResponse>(er, HttpStatus.NOT_FOUND);
